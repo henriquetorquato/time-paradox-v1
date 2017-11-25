@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+	<title>MISSION FAILED</title>
+    <style>
+        
+        .chars{
+            
+            border: none;
+            border-color: transparent;
+            background: transparent;
+            
+        }
+        
+        .num{
+            
+            border: none;
+            border-color: transparent;
+            background: transparent;
+            width: 15px;
+            
+        }
+        
+        #textboxs{
+            
+            margin-top: 300px;
+            
+        }
+        
+        body{
+            
+            background-color: whitesmoke;
+            
+        }
+        
+        p{
+            
+            margin-top: 30px;
+            font: arial;
+            font-family: sans-serif;
+            font-size: 13px;
+            color: dimgrey;
+            
+        }
+        
+    </style>
+    
+    <script>
+        
+        function in_lenght(){
+            document.getElementById("chars-in").value = 20 - document.getElementById("in").value.length + " Caracteres restantes";
+        }
+        
+        function out_lenght(){
+            document.getElementById("chars-out").value = 20 - document.getElementById("out").value.length + " Caracteres restantes";
+        }
+        
+        function iniciar(){
+            
+            var input = document.getElementById("in").value;
+            var output = document.getElementById("out").value;
+            
+            if (input.length <= 0 || output.length <= 0){
+                
+                alert("Preencha os campos!");
+                
+            }else if(input.length < 10 && output.length < 10){
+             
+                alert("Digite no minimo 10 caracteres em pelo menos 1 dos campos campos!");            
+                
+            }else{
+                
+                sessionStorage._input = input;
+                sessionStorage._output = output;
+                
+                window.location = 'script.html';
+                
+            }
+            
+        }
+        
+    </script>
+    
+</head>
+<body>
+    
+    <div id="textboxs">
+        <div align="center">
+            <input type="text" class="num" value="1º" disabled>
+            <input type="text" id="in" maxlength="20" onkeyup="in_lenght()">
+            <input type="text" class="chars" id="chars-in" value="20 Caracteres restantes" disabled>
+        </div>
+        <br>
+        <div align="center">
+            <input type="text" class="num" value="2º" disabled>
+            <input type="text" id="out" maxlength="20" onkeyup="out_lenght()">
+            <input type="text" class="chars" id="chars-out" value="20 Caracteres restantes" disabled>
+        </div>
+        <div align="center">
+            <p>Acentos nâo funcionam!</p>
+        </div>
+        <div align="center">
+            <input type="button" id="btn" value="Iniciar" onclick="iniciar()">
+        </div>
+    </div>
+    
+</body>
+    
+<script>
+    
+    document.getElementById("in").value = "MISSION FAILED";
+    document.getElementById("out").value = "TIME PARADOX";
+    
+    in_lenght();
+    out_lenght();
+    
+</script>
+    
+</html>
